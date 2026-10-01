@@ -38,7 +38,7 @@
   font-family: 'JetBrains Mono', monospace;
   color: var(--iggyp0pi-accent);
 }
-#sidebar .site-title::before { content: '~$ '; opacity: .75; }
+#sidebar .site-title::before { content: '~$'; margin-right: .35em; opacity: .75; }
 #sidebar .site-title::after {
   content: '▊';
   margin-left: 3px;
