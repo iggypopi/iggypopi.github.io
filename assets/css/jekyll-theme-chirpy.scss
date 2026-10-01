@@ -46,6 +46,20 @@
 }
 @keyframes iggyp0pi-blink { 50% { opacity: 0; } }
 
+/* subtitle: bold role, then a smaller personal line */
+#sidebar .site-subtitle { height: auto; }
+#sidebar .site-subtitle strong {
+  display: block;
+  font-style: normal;
+  color: var(--heading-color);
+}
+#sidebar .site-subtitle small {
+  display: block;
+  margin-top: .2rem;
+  font-size: 80%;
+  line-height: 1.4;
+}
+
 /* mono headings */
 #sidebar .site-subtitle,
 h1, h2, h3, .post-title {
