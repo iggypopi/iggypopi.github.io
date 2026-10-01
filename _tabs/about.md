@@ -6,7 +6,7 @@ order: 4
 
 ## whoami
 
-Igor "popi" Stepansky — Security Researcher at OX Security, working on
+Igor "iggyp0pi" Stepansky — Security Researcher at OX Security, working on
 agentic AI for offensive security and automated penetration testing.
 Background across AppSec, cloud and Kubernetes security, AI/ML framework
 security, and kernel vulnerability research. Multiple published CVEs and
