@@ -33,6 +33,16 @@ conference talks.
 - OSWE (in progress)
 - B.Sc. Computer Science, Open University of Israel (in progress)
 
+## Hobbies
+
+Also known as my midlife crises:
+
+- **Brazilian Jiu-Jitsu**: chess with chokes, and the best training I know
+  for staying calm under pressure.
+- **Ultra running**: because a marathon just wasn't long enough.
+- **Dad life**: my favorite full-time job.
+- **Geek stuff**: if it has a CPU, I'll find a way to poke at it.
+
 ## Contact
 
 - GitHub: <https://github.com/iggypopi>
