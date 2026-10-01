@@ -4,6 +4,16 @@ icon: fas fa-user
 order: 0
 ---
 
+<div class="terminal-quote">
+  <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="terminal-body">
+    <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> fortune</p>
+    <blockquote>It is better to be a warrior in a garden than a gardener in a war.</blockquote>
+    <p class="terminal-source">&mdash; proverb, origin unknown</p>
+    <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> <span class="terminal-cursor">▊</span></p>
+  </div>
+</div>
+
 ## whoami
 
 Igor "iggyp0pi" Stepansky — Security Researcher at OX Security, working on
