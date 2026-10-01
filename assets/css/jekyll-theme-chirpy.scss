@@ -15,7 +15,21 @@
 /* append your custom style below */
 
 /* ===== iggyp0pi hacker touches ===== */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+/* JetBrains Mono, self-hosted (SIL OFL 1.1, see assets/fonts/jetbrains-mono/OFL.txt) */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('../fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('../fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+}
 
 :root { --iggyp0pi-accent: #00ff66; }   /* amber alternative: #ffb000 */
 
