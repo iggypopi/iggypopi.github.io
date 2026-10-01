@@ -1,7 +1,7 @@
 ---
 title: About
-icon: fas fa-info-circle
-order: 4
+icon: fas fa-user
+order: 0
 ---
 
 ## whoami

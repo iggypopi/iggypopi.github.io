@@ -1,0 +1,5 @@
+# Overrides for the theme's English UI strings. Jekyll deep-merges this
+# over the theme's _data/locales/en.yml, so only the keys below change.
+
+tabs:
+  about: About Me
