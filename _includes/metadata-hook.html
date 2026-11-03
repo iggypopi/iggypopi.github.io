@@ -1,0 +1,5 @@
+{%- comment -%}
+  Chirpy's hook for extra <head> tags (included at the end of head.html).
+  Feed autodiscovery: lets feed readers find /feed.xml from any page URL.
+{%- endcomment -%}
+<link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
