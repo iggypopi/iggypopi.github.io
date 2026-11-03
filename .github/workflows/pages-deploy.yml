@@ -37,6 +37,10 @@ jobs:
 
       - name: Setup Pages
         id: pages
+        # GitHub Free serves no Pages site from a private repository, and this
+        # step fails without one. Skipped while private: the build still runs
+        # and uploads the artifact for local preview.
+        if: ${{ !github.event.repository.private }}
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - name: Setup Ruby
@@ -62,6 +66,8 @@ jobs:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
+    # Never deploy while the repository is private (pre-launch).
+    if: ${{ !github.event.repository.private }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
