@@ -1,0 +1,9 @@
+# One entry per tool. Posts that carry the tool's tag are listed under it automatically.
+- name: ActChain
+  tag: ActChain
+  status: rebuild in progress
+  summary: >-
+    A security scanner for GitHub Actions workflows and their dependencies.
+    It walks the supply chain behind a CI/CD pipeline and flags vulnerabilities,
+    misconfigurations, and compliance gaps before they ship.
+  repo:

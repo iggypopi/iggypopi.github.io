@@ -1,0 +1,75 @@
+---
+layout: default
+---
+{%- comment -%}
+  Site override of jekyll-theme-chirpy 7.6.0 _layouts/home.html.
+  Changes: posts render as dense rows (date, CVE badge, title, severity,
+  description, context) instead of cards, and a "latest disclosures" strip
+  appears once the feed spans more than one page. The pin/pagination logic
+  below is unchanged from the theme. Diff against the gem on every Chirpy bump.
+{%- endcomment -%}
+{% include lang.html %}
+
+{% assign all_pinned = site.posts | where: 'pin', 'true' %}
+{% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
+
+{% assign posts = '' | split: '' %}
+
+{% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page %}
+{% assign visible_end = visible_start | plus: paginator.per_page %}
+
+{% if all_pinned.size > visible_start %}
+  {% if all_pinned.size > visible_end %}
+    {% assign pinned_size = paginator.per_page %}
+  {% else %}
+    {% assign pinned_size = all_pinned.size | minus: visible_start %}
+  {% endif %}
+
+  {% for i in (visible_start..all_pinned.size) limit: pinned_size %}
+    {% assign posts = posts | push: all_pinned[i] %}
+  {% endfor %}
+{% else %}
+  {% assign pinned_size = 0 %}
+{% endif %}
+
+{% assign normal_size = paginator.posts | size | minus: pinned_size %}
+
+{% if normal_size > 0 %}
+  {% if pinned_size > 0 %}
+    {% assign normal_start = 0 %}
+  {% else %}
+    {% assign normal_start = visible_start | minus: all_pinned.size %}
+  {% endif %}
+
+  {% assign normal_end = normal_start | plus: normal_size | minus: 1 %}
+
+  {% for i in (normal_start..normal_end) %}
+    {% assign posts = posts | push: all_normal[i] %}
+  {% endfor %}
+{% endif %}
+
+{% if paginator.total_pages > 1 %}{% include cve-strip.html %}{% endif %}
+
+<div id="post-list" class="post-rows flex-grow-1 px-xl-1">
+  {% for post in posts %}
+    <article class="post-row">
+      <div class="row-line1">
+        <time class="rdate" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+        {% include cve-badge.html post=post %}
+        <a class="rtitle" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% include severity-pill.html post=post %}
+        {% if post.pin %}<span class="pin-flag" title="{{ site.data.locales[lang].post.pin_prompt }}"><i class="fas fa-thumbtack fa-fw"></i></span>{% endif %}
+      </div>
+      <p class="row-desc">{% if post.description %}{{ post.description }}{% else %}{% include post-summary.html %}{% endif %}</p>
+      <div class="row-line2">
+        {% if post.component %}<span>{{ post.component }}</span>{% endif %}
+        {% if post.bug_class %}<span>{{ post.bug_class }}</span>{% endif %}
+        {% if post.categories[1] %}<span>{{ post.categories[1] }}</span>{% elsif post.categories[0] %}<span>{{ post.categories[0] }}</span>{% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+  {% include post-paginator.html %}
+{% endif %}

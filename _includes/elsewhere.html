@@ -1,0 +1,23 @@
+{%- comment -%}
+  Writeups mirrored on other blogs and press coverage, read from post front
+  matter (republished, press). The post here is the entry; mirrors and coverage
+  hang under it, so the author reads as the source. Optional _data/press.yml
+  holds coverage that is not tied to one post.
+{%- endcomment -%}
+{%- assign items = site.posts | where_exp: 'p', 'p.republished or p.press' -%}
+{%- if items.size > 0 or site.data.press -%}
+<ul class="elsewhere-list">
+{%- for p in items %}
+  <li>
+    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+    {%- if p.republished and p.republished.size > 0 %} <span class="elsewhere-note">also on {% for r in p.republished %}<a href="{{ r.url }}">{{ r.outlet }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif -%}
+    {%- if p.press and p.press.size > 0 %} <span class="elsewhere-note">covered by {% for c in p.press %}<a href="{{ c.url }}">{{ c.outlet }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}
+  </li>
+{%- endfor %}
+{%- for e in site.data.press %}
+  <li><a href="{{ e.url }}">{{ e.title }}</a> <span class="elsewhere-note">{{ e.outlet }}{% if e.date %}, {{ e.date | date: '%Y' }}{% endif %}</span></li>
+{%- endfor %}
+</ul>
+{%- else -%}
+<p>Nothing yet.</p>
+{%- endif -%}

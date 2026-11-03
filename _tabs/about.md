@@ -1,7 +1,7 @@
 ---
 title: About
 icon: fas fa-user
-order: 0
+order: 4
 ---
 
 <div class="terminal-quote">
@@ -9,34 +9,40 @@ order: 0
   <div class="terminal-body">
     <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> fortune</p>
     <blockquote>It is better to be a warrior in a garden than a gardener in a war.</blockquote>
-    <p class="terminal-source">&mdash; proverb, origin unknown</p>
+    <p class="terminal-source">proverb, origin unknown</p>
     <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> <span class="terminal-cursor">▊</span></p>
   </div>
 </div>
 
 ## whoami
 
-Igor "iggyp0pi" Stepansky — Security Researcher at OX Security, working on
+Igor "iggyp0pi" Stepansky, Security Researcher at OX Security, working on
 agentic AI for offensive security and automated penetration testing.
 Background across AppSec, cloud and Kubernetes security, AI/ML framework
-security, and kernel vulnerability research. Multiple published CVEs and
-conference talks.
+security, and kernel vulnerability research.
+[{{ site.tags['CVE Discovered'] | size }} published CVEs](/research/) and [conference talks](/talks/).
 
 ## Experience
 
-- **OX Security** — Security Researcher (2026–present). Agentic AI for
+- **OX Security**: Security Researcher (2026-present). Agentic AI for
   offensive security and automated pentesting.
-- **Orca Security, Research Pod** (2025–2026). API, Kubernetes, and
+- **Orca Security, Research Pod** (2025-2026). API, Kubernetes, and
   AppSec research.
-- **Axonius** — Security Engineer (2022–2025). SDLC security tooling and
+- **Axonius**: Security Engineer (2022-2025). SDLC security tooling and
   pentest engagements.
-- **Rafael Advanced Defense Systems** — Cyber Security Analyst
-  (2020–2022). Blue team / SOC.
+- **Rafael Advanced Defense Systems**: Cyber Security Analyst
+  (2020-2022). Blue team / SOC.
 
 ## Community
 
-- OWASP Israel — CFP committee
-- BSidesTLV — volunteer staff
+- OWASP Israel, CFP committee
+- BSidesTLV, volunteer staff
+
+## Elsewhere
+
+My writeups that also ran on other blogs, and the coverage they picked up. The full versions live here.
+
+{% include elsewhere.html %}
 
 ## Certifications & education
 

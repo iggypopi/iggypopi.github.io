@@ -1,0 +1,58 @@
+{%- comment -%}
+  Generated research index. Lists every post in the "Vulnerability Research"
+  category grouped by year, newest first, reading cve / cvss / component /
+  bug_class / republished / press from post front matter. Topic filters are
+  CSS-only (:target), so this page has no JavaScript and no hand edits.
+{%- endcomment -%}
+{%- assign research = site.categories['Vulnerability Research'] -%}
+{%- assign topics = '' | split: '' -%}
+{%- for p in research -%}
+  {%- assign t = p.categories[1] -%}
+  {%- if t -%}{%- unless topics contains t -%}{%- assign topics = topics | push: t -%}{%- endunless -%}{%- endif -%}
+{%- endfor -%}
+{%- assign topics = topics | sort -%}
+<style>
+{%- for t in topics -%}{%- assign s = t | slugify %}
+#topic-{{ s }}:target ~ .research-index .row-item:not([data-topic="{{ s }}"]) { display: none; }
+#topic-{{ s }}:target ~ .research-index .year-group:not(:has(.row-item[data-topic="{{ s }}"])) { display: none; }
+#topic-{{ s }}:target ~ .research-filter .chip[href="#topic-{{ s }}"] { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
+#topic-{{ s }}:target ~ .research-filter .chip.all { color: var(--text-muted-color); border-color: var(--btn-border-color); }
+{%- endfor %}
+#research-all:target ~ .research-filter .chip[href="#research-all"] { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
+</style>
+<div id="research-all" class="filter-anchor"></div>
+{%- for t in topics -%}<div id="topic-{{ t | slugify }}" class="filter-anchor"></div>{%- endfor %}
+<nav class="research-filter" aria-label="Filter by area">
+  <a class="chip all" href="#research-all">all</a>
+  {%- for t in topics %}
+  <a class="chip" href="#topic-{{ t | slugify }}">{{ t | downcase }}</a>
+  {%- endfor %}
+</nav>
+<div class="research-index">
+{%- assign by_year = research | group_by_exp: 'p', "p.date | date: '%Y'" -%}
+{%- for yg in by_year %}
+  <section class="year-group">
+    <h2 class="year" id="y{{ yg.name }}">{{ yg.name }}</h2>
+    <ul class="rows">
+    {%- for p in yg.items %}
+      <li class="row-item" data-topic="{{ p.categories[1] | slugify }}">
+        <div class="line1">
+          <time class="rdate" datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: '%Y-%m-%d' }}</time>
+          {% include cve-badge.html post=p %}
+          <a class="rtitle" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          {% include severity-pill.html post=p %}
+        </div>
+        <div class="line2">
+          {%- if p.component %}<span>{{ p.component }}</span>{% endif -%}
+          {%- if p.bug_class %}<span>{{ p.bug_class }}</span>{% endif -%}
+          {%- if p.categories[1] %}<span>{{ p.categories[1] }}</span>{% endif -%}
+          {%- for r in p.republished %}<a class="outlet" href="{{ r.url }}">also on {{ r.outlet }}</a>{% endfor -%}
+          {%- for c in p.press %}<a class="outlet" href="{{ c.url }}">{{ c.outlet }}</a>{% endfor -%}
+        </div>
+      </li>
+    {%- endfor %}
+    </ul>
+  </section>
+{%- endfor %}
+</div>
+<p class="research-foot">Everything on this site by date, notes included: <a href="{{ '/archives/' | relative_url }}">timeline</a>.</p>

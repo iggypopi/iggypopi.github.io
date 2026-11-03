@@ -62,7 +62,7 @@
 
 /* mono headings */
 #sidebar .site-subtitle,
-h1, h2, h3, .post-title {
+h1, h2, h3 {
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -123,3 +123,100 @@ html[data-bs-theme=dark] a:hover { color: var(--iggyp0pi-accent); }
   #sidebar .site-title::after,
   .content .terminal-quote .terminal-cursor { animation: none; }
 }
+
+/* small status pill, used on the Tools page */
+.content .status-pill {
+  display: inline-block;
+  margin-left: .45rem;
+  padding: .05rem .5rem;
+  border: 1px solid rgba(0, 255, 102, .35);
+  border-radius: 999px;
+  background: rgba(0, 255, 102, .08);
+  color: var(--iggyp0pi-accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6em;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-transform: lowercase;
+  vertical-align: middle;
+  text-shadow: none;
+}
+
+/* ===== iggyp0pi v2: structure-first design layer (part 1) ===== */
+
+/* The theme forces an orange link hover with !important in several places; make it the accent. */
+.content a:hover, .post-meta a:hover, footer a:hover, #breadcrumb a:hover,
+#access-lastmod a:hover, #page-category a:hover, #page-tag a:hover,
+#search-results a:hover, .post-tail-wrapper a:hover { color: var(--iggyp0pi-accent) !important; }
+
+/* Taxonomy pages stay reachable (breadcrumbs, post footers) but leave the nav. */
+#sidebar .nav-item:has(> a.nav-link[href$="/categories/"]),
+#sidebar .nav-item:has(> a.nav-link[href$="/tags/"]),
+#sidebar .nav-item:has(> a.nav-link[href$="/archives/"]) { display: none; }
+
+/* Nav labels in lowercase, like a shell; terminal icon for Home (Font Awesome 7 sets glyphs through --fa). */
+#sidebar .nav-link span { text-transform: lowercase; letter-spacing: .02em; }
+#sidebar .nav-item:first-child .nav-link i { --fa: "\f120"; }
+
+/* Tab page titles get the prompt; section headings stay plain English. */
+h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacity: .75; font-family: 'JetBrains Mono', monospace; }
+
+/* shared metadata atoms */
+.rdate { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--text-muted-color); white-space: nowrap; }
+.rtitle { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: var(--heading-color); text-decoration: none; }
+.rtitle:hover { color: var(--iggyp0pi-accent) !important; }
+.cve-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .02em; padding: .05rem .45rem; border: 1px solid var(--iggyp0pi-accent); border-radius: 4px; color: var(--iggyp0pi-accent); white-space: nowrap; line-height: 1.5; }
+.cve-badge.pending { border-style: dashed; border-color: var(--text-muted-color); color: var(--text-muted-color); }
+.sev-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: .68rem; text-transform: lowercase; padding: .05rem .5rem; border-radius: 999px; border: 1px solid; white-space: nowrap; line-height: 1.5; }
+.sev-critical { background: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); color: #061007; font-weight: 700; }
+.sev-high { border-color: var(--iggyp0pi-accent); color: var(--iggyp0pi-accent); }
+.sev-medium { border-color: #ffb000; color: #ffb000; }
+.sev-low { border-color: var(--text-muted-color); color: var(--text-muted-color); }
+
+/* home: dense rows, no cards */
+#post-list.post-rows { padding-top: .25rem; }
+.post-row { padding: .9rem .6rem .9rem .75rem; border-bottom: 1px solid rgba(255, 255, 255, .07); border-left: 2px solid transparent; transition: border-color .15s ease, background-color .15s ease; }
+.post-row:hover { border-left-color: var(--iggyp0pi-accent); background: var(--card-hover-bg); }
+.post-row .row-line1 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .7rem; }
+.post-row .row-desc { margin: .4rem 0 .3rem; color: var(--text-muted-color); font-size: .92rem; line-height: 1.55; }
+.post-row .row-line2 { display: flex; flex-wrap: wrap; gap: .25rem 1rem; font-family: 'JetBrains Mono', monospace; font-size: .76rem; color: var(--text-muted-color); }
+.post-row .pin-flag { color: var(--iggyp0pi-accent); font-size: .8rem; }
+
+/* latest disclosures strip (home, only once the feed paginates) */
+.cve-strip { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: 0 0 1.25rem; padding: .6rem .8rem; border: 1px solid rgba(0, 255, 102, .2); border-radius: 8px; background: rgba(0, 255, 102, .04); font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+.cve-strip-label { color: var(--text-muted-color); margin-right: .25rem; }
+.cve-strip-label::before { content: '~$ '; color: var(--iggyp0pi-accent); opacity: .75; }
+.cve-chip { display: inline-flex; align-items: center; gap: .35rem; text-decoration: none; color: var(--text-color); padding: .15rem .4rem; border-radius: 6px; }
+.cve-chip:hover { background: var(--card-hover-bg); color: var(--iggyp0pi-accent) !important; }
+.cve-chip .comp { color: var(--text-muted-color); }
+.cve-strip-all { margin-left: auto; color: var(--iggyp0pi-accent); text-decoration: none; }
+
+/* ===== iggyp0pi v2 (part 2): research index, talks, elsewhere, panel ===== */
+.filter-anchor { position: relative; top: -5.5rem; height: 0; }
+.research-filter { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+.research-filter .chip { padding: .15rem .65rem; border: 1px solid var(--btn-border-color); border-radius: 999px; color: var(--text-muted-color); text-decoration: none; transition: color .15s ease, border-color .15s ease; }
+.research-filter .chip:hover { color: var(--iggyp0pi-accent) !important; border-color: var(--iggyp0pi-accent); }
+.research-index .year-group { position: relative; padding-left: 1.5rem; margin-bottom: 1.75rem; border-left: 1px solid rgba(0, 255, 102, .25); }
+.research-index h2.year { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--iggyp0pi-accent); margin: 0 0 .5rem; position: relative; }
+.research-index h2.year::before { content: ''; position: absolute; left: -1.5rem; top: .42em; width: 9px; height: 9px; margin-left: -5px; border-radius: 50%; background: var(--iggyp0pi-accent); box-shadow: 0 0 8px rgba(0, 255, 102, .6); }
+.research-index .rows { list-style: none; padding: 0; margin: 0; }
+.research-index .row-item { padding: .6rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
+.research-index .line1 { display: flex; flex-wrap: wrap; gap: .4rem .7rem; align-items: baseline; }
+.research-index .line2 { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin-top: .25rem; font-family: 'JetBrains Mono', monospace; font-size: .76rem; color: var(--text-muted-color); }
+.research-index .outlet { color: var(--text-muted-color); text-decoration: none; border-bottom: 1px dotted var(--text-muted-color); }
+.research-index .outlet:hover { color: var(--iggyp0pi-accent) !important; border-bottom-color: var(--iggyp0pi-accent); }
+.research-foot { margin-top: 1.5rem; color: var(--text-muted-color); font-size: .9rem; }
+.talk-list, .elsewhere-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
+.talk-row { padding: .65rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
+.talk-row .line1 { font-family: 'JetBrains Mono', monospace; font-size: .82rem; color: var(--text-muted-color); }
+.talk-row .talk-event { color: var(--heading-color); }
+.talk-row .line2 { margin-top: .15rem; }
+.talk-row .talk-title { font-weight: 700; }
+.talk-row .sep { color: var(--text-muted-color); margin: 0 .15rem; }
+.talk-row .talk-abstract { margin: .3rem 0 0; color: var(--text-muted-color); font-size: .92rem; }
+.role-pill { display: inline-block; margin-left: .35rem; padding: .02rem .45rem; border: 1px solid rgba(0, 255, 102, .35); border-radius: 999px; color: var(--iggyp0pi-accent); font-family: 'JetBrains Mono', monospace; font-size: .68rem; text-transform: lowercase; }
+.elsewhere-list li { padding: .4rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
+.elsewhere-note { color: var(--text-muted-color); font-size: .9rem; }
+#access-lastmod .topic-count { color: var(--text-muted-color); font-family: 'JetBrains Mono', monospace; font-size: .75rem; margin-left: .25rem; }
+@media (prefers-reduced-motion: reduce) { .post-row, .research-filter .chip { transition: none; } }
+.research-filter .chip.all { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }

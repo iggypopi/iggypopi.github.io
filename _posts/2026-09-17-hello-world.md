@@ -3,7 +3,6 @@ title: "hello, world"
 date: 2026-09-17 20:00:00 +0300
 categories: [Meta]
 tags: [blog]
-pin: true
 description: Why this blog exists, and the two rules every post here follows.
 ---
 

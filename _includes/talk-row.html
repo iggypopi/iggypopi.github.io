@@ -1,0 +1,12 @@
+{%- assign t = include.talk -%}
+<li class="talk-row">
+  <div class="line1"><time class="rdate" datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: '%Y-%m-%d' }}</time> <span class="talk-event">{{ t.event }}{% if t.city %}, {{ t.city }}{% endif %}</span>{% if t.role and t.role != 'speaker' %} <span class="role-pill">{{ t.role }}</span>{% endif %}</div>
+  {%- if t.title %}
+  <div class="line2"><span class="talk-title">{{ t.title }}</span>
+    {%- if t.slides %} <span class="sep">|</span> <a href="{{ t.slides | relative_url }}">slides</a>{% endif -%}
+    {%- if t.video %} <span class="sep">|</span> <a href="{{ t.video }}"><i class="fab fa-youtube"></i> recording</a>{% endif -%}
+    {%- if t.writeup %} <span class="sep">|</span> <a href="{{ t.writeup | relative_url }}">writeup</a>{% endif -%}
+  </div>
+  {%- endif %}
+  {%- if t.abstract %}<p class="talk-abstract">{{ t.abstract }}</p>{% endif %}
+</li>

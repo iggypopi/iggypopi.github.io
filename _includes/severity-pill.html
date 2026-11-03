@@ -1,0 +1,8 @@
+{%- assign p = include.post -%}
+{%- if p.cvss -%}
+  {%- assign s = 'low' -%}
+  {%- if p.cvss >= 9.0 -%}{%- assign s = 'critical' -%}
+  {%- elsif p.cvss >= 7.0 -%}{%- assign s = 'high' -%}
+  {%- elsif p.cvss >= 4.0 -%}{%- assign s = 'medium' -%}{%- endif -%}
+  <span class="sev-pill sev-{{ s }}" title="CVSS {{ p.cvss }}">{{ s }} {{ p.cvss }}</span>
+{%- endif -%}

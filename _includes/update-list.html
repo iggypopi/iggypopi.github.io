@@ -1,0 +1,25 @@
+{%- comment -%}
+  Site override of jekyll-theme-chirpy 7.6.0 _includes/update-list.html.
+  Shows the research topics (second-level categories) with counts instead of
+  recently updated posts. Heading text comes from locale panel.lastmod.
+{%- endcomment -%}
+{%- assign research = site.categories['Vulnerability Research'] -%}
+{%- assign topics = '' | split: '' -%}
+{%- for p in research -%}
+  {%- assign t = p.categories[1] -%}
+  {%- if t -%}{%- unless topics contains t -%}{%- assign topics = topics | push: t -%}{%- endunless -%}{%- endif -%}
+{%- endfor -%}
+{%- assign topics = topics | sort -%}
+{%- if topics.size > 0 -%}
+<section id="access-lastmod">
+  <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
+  <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+    {%- for t in topics -%}
+      {%- assign n = 0 -%}
+      {%- for p in research -%}{%- if p.categories[1] == t -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+      {%- assign cslug = t | slugify %}
+    <li class="text-truncate lh-lg"><a href="{{ '/categories/' | append: cslug | append: '/' | relative_url }}">{{ t }}</a> <span class="topic-count">{{ n }}</span></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif -%}

@@ -1,0 +1,31 @@
+---
+title: Talks
+icon: fas fa-microphone-lines
+order: 2
+---
+{%- assign now = site.time | date: '%s' | plus: 0 -%}
+{%- assign talks = site.data.talks | sort: 'date' | reverse -%}
+{%- assign upcoming = '' | split: '' -%}
+{%- assign past = '' | split: '' -%}
+{%- for t in talks -%}
+  {%- assign ts = t.date | date: '%s' | plus: 0 -%}
+  {%- if ts >= now -%}{%- assign upcoming = upcoming | push: t -%}{%- else -%}{%- assign past = past | push: t -%}{%- endif -%}
+{%- endfor -%}
+<p>Where I speak, and where you can catch me in person. Each talk links to the slides, and to the recording when there is one.</p>
+<h2 id="upcoming">Upcoming</h2>
+{%- if upcoming.size > 0 %}
+<ul class="talk-list">
+{%- for t in upcoming reversed %}{% include talk-row.html talk=t %}{% endfor %}
+</ul>
+{%- else %}
+<p>Nothing on the calendar right now. If you want me at your event, get in touch.</p>
+{%- endif %}
+<h2 id="past">Past</h2>
+{%- if past.size > 0 %}
+<ul class="talk-list">
+{%- for t in past %}{% include talk-row.html talk=t %}{% endfor %}
+</ul>
+{%- else %}
+<p>Talks will land here as I give them.</p>
+{%- endif %}
+<p class="talks-foot">I also help run the local scene: CFP committee for OWASP Israel, and volunteer staff at BSidesTLV.</p>

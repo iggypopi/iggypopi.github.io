@@ -1,0 +1,15 @@
+# Talks and conference sessions, one entry each. Dates as YYYY-MM-DD.
+# Upcoming and past are split automatically at build time, so an entry moves
+# itself from Upcoming to Past on the first deploy after its date.
+# Keep the "[]" line below when the list is empty.
+#
+# - title: Talk title
+#   event: BSidesTLV
+#   city: Tel Aviv
+#   date: 2027-06-25
+#   role: speaker          # speaker | panel | keynote | attendee
+#   abstract: One or two sentences on what the talk covers.
+#   slides: /assets/slides/my-talk.pdf
+#   video: https://www.youtube.com/watch?v=VIDEO_ID
+#   writeup: /posts/some-post/
+[]

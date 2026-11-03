@@ -21,7 +21,7 @@ tagline: >- # it will display as the subtitle
   <small>Father, geek, BJJ, ultra running &amp; other midlife crises</small>
 
 description: >- # used by seo meta and the atom feed
-  Security research by Igor "iggyp0pi" Stepansky — offensive security,
+  Security research by Igor "iggyp0pi" Stepansky: offensive security,
   AppSec, cloud & Kubernetes, agentic AI.
 
 # Fill in the protocol & hostname for your site.
@@ -88,8 +88,8 @@ pageviews:
 #
 # Available options:
 #
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
+#     light: Use the light color scheme
+#     dark: Use the dark color scheme
 #
 theme_mode: dark # [light | dark]
 

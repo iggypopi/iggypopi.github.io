@@ -1,5 +1,23 @@
 # Overrides for the theme's English UI strings. Jekyll deep-merges this
 # over the theme's _data/locales/en.yml, so only the keys below change.
+# Every _tabs page needs a key here equal to its lowercased title, or the
+# page renders with a blank browser title.
 
 tabs:
+  home: Home
+  research: Research
+  talks: Talks
+  tools: Tools
   about: About Me
+  categories: Topics
+  tags: Tags
+  archives: Timeline
+
+panel:
+  lastmod: Topics
+  trending_tags: Tags
+
+post:
+  pin_prompt: pinned
+
+meta: "Built with :PLATFORM and :THEME. Self-hosted assets, no third-party requests."
