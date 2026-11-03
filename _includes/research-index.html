@@ -39,15 +39,15 @@
         <div class="line1">
           <time class="rdate" datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: '%Y-%m-%d' }}</time>
           {% include cve-badge.html post=p %}
-          <a class="rtitle" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          <h3 class="row-title"><a class="rtitle" href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
           {% include severity-pill.html post=p %}
         </div>
         <div class="line2">
           {%- if p.component %}<span>{{ p.component }}</span>{% endif -%}
           {%- if p.bug_class %}<span>{{ p.bug_class }}</span>{% endif -%}
           {%- if p.categories[1] %}<span>{{ p.categories[1] }}</span>{% endif -%}
-          {%- for r in p.republished %}<a class="outlet" href="{{ r.url }}">also on {{ r.outlet }}</a>{% endfor -%}
-          {%- for c in p.press %}<a class="outlet" href="{{ c.url }}">{% if forloop.first %}covered by {% endif %}{{ c.outlet }}</a>{% endfor -%}
+          {%- if p.republished and p.republished.size > 0 %}<span class="outlets">also on {% for r in p.republished %}<a class="outlet" href="{{ r.url }}">{{ r.outlet }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif -%}
+          {%- if p.press and p.press.size > 0 %}<span class="outlets">covered by {% for c in p.press %}<a class="outlet" href="{{ c.url }}">{{ c.outlet }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif -%}
         </div>
       </li>
     {%- endfor %}

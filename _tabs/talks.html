@@ -21,7 +21,7 @@ description: >-
 {%- for t in upcoming reversed %}{% include talk-row.html talk=t %}{% endfor %}
 </ul>
 {%- else %}
-<p>Nothing on the calendar right now. If you want me at your event, get in touch.</p>
+<p>Nothing on the calendar right now. If you want me at your event, <a href="{{ '/about/' | relative_url }}#contact">get in touch</a>.</p>
 {%- endif %}
 <h2 id="past">Past</h2>
 {%- if past.size > 0 %}

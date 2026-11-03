@@ -56,7 +56,7 @@ layout: default
       <div class="row-line1">
         <time class="rdate" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
         {% include cve-badge.html post=post %}
-        <a class="rtitle" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <h2 class="row-title"><a class="rtitle" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
         {% include severity-pill.html post=post %}
         {% if post.pin %}<span class="pin-flag" title="{{ site.data.locales[lang].post.pin_prompt }}"><i class="fas fa-thumbtack fa-fw"></i></span>{% endif %}
       </div>

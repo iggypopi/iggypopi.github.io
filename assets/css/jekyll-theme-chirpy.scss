@@ -220,3 +220,34 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 #access-lastmod .topic-count { color: var(--text-muted-color); font-family: 'JetBrains Mono', monospace; font-size: .75rem; margin-left: .25rem; }
 @media (prefers-reduced-motion: reduce) { .post-row, .research-filter .chip { transition: none; } }
 .research-filter .chip.all { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
+
+/* ---------- v3 fixes (2026-11-03) ---------- */
+
+/* The theme's %link-hover paints hovers orange with !important and adds an
+   orange underline. Repeat its exact selector list so the accent wins on
+   source order: same specificity, later rule. */
+#page-category a:hover, #page-tag a:hover, #access-lastmod a:hover,
+.post-tail-wrapper .license-wrapper > a:hover, .post-edit > a:hover,
+#search-results a:hover, footer a:hover, #topbar #breadcrumb a:hover,
+.post-meta a:not([class]):hover, .content a:not(.img-link):hover {
+  color: var(--iggyp0pi-accent) !important;
+  border-bottom-color: var(--iggyp0pi-accent);
+}
+
+/* Row titles are headings for screen readers and outlines, styled as before. */
+.post-row h2.row-title, .research-index h3.row-title {
+  margin: 0; padding: 0; font: inherit; line-height: inherit; color: inherit; letter-spacing: inherit;
+}
+
+/* Inside .content the theme underlines every link with a bottom border.
+   The custom link components keep their own edges. */
+.content a.rtitle, .content a.rtitle:hover { border-bottom: 0; }
+.content .research-filter a.chip:not(.all) { border-bottom-color: var(--btn-border-color); }
+.content .research-filter a.chip:hover { border-color: var(--iggyp0pi-accent); }
+.content .research-index a.outlet { border-bottom: 1px dotted var(--text-muted-color); }
+.content .research-index a.outlet:hover { border-bottom: 1px dotted var(--iggyp0pi-accent); }
+
+/* Row hover: the theme's card hover grey dropped the muted text to about 2.4:1.
+   Use a faint accent tint and lift the secondary text instead. */
+.post-row:hover { background: rgba(0, 255, 102, .03); }
+.post-row:hover .row-desc, .post-row:hover .row-line2 { color: var(--text-color); }
