@@ -2,6 +2,9 @@
 title: About
 icon: fas fa-user
 order: 4
+description: >-
+  Igor Stepansky (iggyp0pi), security researcher: offensive security, AppSec,
+  cloud and Kubernetes, agentic AI. Experience, community work, contact.
 ---
 
 <div class="terminal-quote">

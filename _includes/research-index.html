@@ -47,7 +47,7 @@
           {%- if p.bug_class %}<span>{{ p.bug_class }}</span>{% endif -%}
           {%- if p.categories[1] %}<span>{{ p.categories[1] }}</span>{% endif -%}
           {%- for r in p.republished %}<a class="outlet" href="{{ r.url }}">also on {{ r.outlet }}</a>{% endfor -%}
-          {%- for c in p.press %}<a class="outlet" href="{{ c.url }}">{{ c.outlet }}</a>{% endfor -%}
+          {%- for c in p.press %}<a class="outlet" href="{{ c.url }}">{% if forloop.first %}covered by {% endif %}{{ c.outlet }}</a>{% endfor -%}
         </div>
       </li>
     {%- endfor %}
