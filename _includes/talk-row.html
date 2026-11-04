@@ -1,12 +1,31 @@
+{%- comment -%}
+  One appearance on the talks timeline. The event name is the headline and
+  links to the recording when there is one, else to the abstract page; the
+  links under the title repeat both so neither hides behind the other.
+{%- endcomment -%}
 {%- assign t = include.talk -%}
+{%- assign primary = t.video | default: t.abstract_url -%}
 <li class="talk-row">
-  <div class="line1"><time class="rdate" datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: '%Y-%m-%d' }}</time> <span class="talk-event">{{ t.event }}{% if t.city %}, {{ t.city }}{% endif %}</span>{% if t.role and t.role != 'speaker' %} <span class="role-pill">{{ t.role }}</span>{% endif %}</div>
+  <div class="talk-meta">
+    <time class="rdate" datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: '%Y-%m-%d' }}</time>
+    {%- if t.city %}<span class="talk-city">{{ t.city }}</span>{% endif -%}
+    {%- if t.role and t.role != 'speaker' %}<span class="role-pill">{{ t.role }}</span>{% endif -%}
+  </div>
+  <h3 class="talk-event">
+    {%- if primary %}<a href="{{ primary }}">{% endif -%}
+    {{ t.event }}{% if t.host %}<span class="talk-host"> &middot; {{ t.host }}</span>{% endif %}
+    {%- if primary %}</a>{% endif -%}
+  </h3>
   {%- if t.title %}
-  <div class="line2"><span class="talk-title">{{ t.title }}</span>
-    {%- if t.slides %} <span class="sep">|</span> <a href="{{ t.slides | relative_url }}">slides</a>{% endif -%}
-    {%- if t.video %} <span class="sep">|</span> <a href="{{ t.video }}"><i class="fab fa-youtube"></i> recording</a>{% endif -%}
-    {%- if t.writeup %} <span class="sep">|</span> <a href="{{ t.writeup | relative_url }}">writeup</a>{% endif -%}
+  <p class="talk-title">{{ t.title }}{% if t.with and t.with.size > 0 %} <span class="talk-with">with {{ t.with | join: ', ' }}</span>{% endif %}</p>
+  {%- endif %}
+  {%- if t.video or t.abstract_url or t.slides or t.writeup or t.recap %}
+  <div class="talk-links">
+    {%- if t.video %}<a class="tchip" href="{{ t.video }}"><i class="fab fa-youtube"></i> recording</a>{% endif -%}
+    {%- if t.abstract_url %}<a class="tchip" href="{{ t.abstract_url }}"><i class="fas fa-file-lines"></i> abstract</a>{% endif -%}
+    {%- if t.slides %}<a class="tchip" href="{{ t.slides }}"><i class="fas fa-file-powerpoint"></i> slides</a>{% endif -%}
+    {%- if t.writeup %}<a class="tchip" href="{{ t.writeup | relative_url }}"><i class="fas fa-pen-nib"></i> writeup</a>{% endif -%}
+    {%- for r in t.recap %}<a class="tchip" href="{{ r.url }}"><i class="fas fa-newspaper"></i> {{ r.outlet }}</a>{% endfor -%}
   </div>
   {%- endif %}
-  {%- if t.abstract %}<p class="talk-abstract">{{ t.abstract }}</p>{% endif %}
 </li>

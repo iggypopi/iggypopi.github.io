@@ -23,7 +23,7 @@ Igor "iggyp0pi" Stepansky, Security Researcher at OX Security, working on
 agentic AI for offensive security and automated penetration testing.
 Background across AppSec, cloud and Kubernetes security, AI/ML framework
 security, and kernel vulnerability research.
-[{{ site.tags['CVE Discovered'] | size }} published CVEs](/research/) and [conference talks](/talks/).
+[{{ site.tags['CVE Discovered'] | size }} published CVEs](/research/) and [{{ site.data.talks | size }} conference talks](/talks/).
 
 ## Experience
 

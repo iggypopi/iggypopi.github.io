@@ -3,9 +3,14 @@ title: Talks
 icon: fas fa-microphone-lines
 order: 2
 description: >-
-  Conference talks and sessions by iggyp0pi, upcoming and past, with slides
-  and recordings where available.
+  Conference talks by iggyp0pi as a timeline: where and when, with the
+  recording or the abstract for each.
 ---
+{%- comment -%}
+  Generated talks timeline, read from _data/talks.yml. One node per
+  appearance, grouped by year on the same rail as the research index.
+  Upcoming (if any) sits on top, soonest first; past is newest first.
+{%- endcomment -%}
 {%- assign now = site.time | date: '%s' | plus: 0 -%}
 {%- assign talks = site.data.talks | sort: 'date' | reverse -%}
 {%- assign upcoming = '' | split: '' -%}
@@ -14,21 +19,37 @@ description: >-
   {%- assign ts = t.date | date: '%s' | plus: 0 -%}
   {%- if ts >= now -%}{%- assign upcoming = upcoming | push: t -%}{%- else -%}{%- assign past = past | push: t -%}{%- endif -%}
 {%- endfor -%}
-<p>Where I speak, and where you can catch me in person. Each talk links to the slides, and to the recording when there is one.</p>
-<h2 id="upcoming">Upcoming</h2>
+{%- assign recorded = talks | where_exp: 't', 't.video' | size -%}
+<p>Where I have spoken, newest first. The event name links to the recording when there is one, otherwise to the abstract; both are listed under each talk.</p>
+<p class="research-stats talk-stats">
+  <span class="stat-num">{{ talks.size }}</span>
+  <span class="stat-label">talks</span>
+  {%- if recorded > 0 %}<span class="stat-pending">{{ recorded }} recorded</span>{% endif -%}
+</p>
 {%- if upcoming.size > 0 %}
-<ul class="talk-list">
-{%- for t in upcoming reversed %}{% include talk-row.html talk=t %}{% endfor %}
-</ul>
-{%- else %}
-<p>Nothing on the calendar right now. If you want me at your event, <a href="{{ '/about/' | relative_url }}#contact">get in touch</a>.</p>
-{%- endif %}
+<h2 id="upcoming">Upcoming</h2>
+<div class="talk-timeline">
+{%- assign up_by_year = upcoming | reverse | group_by_exp: 't', "t.date | date: '%Y'" -%}
+{%- for yg in up_by_year %}
+  <section class="year-group">
+    <h2 class="year" id="u{{ yg.name }}">{{ yg.name }}</h2>
+    <ul class="talk-list">
+    {%- for t in yg.items %}{% include talk-row.html talk=t %}{% endfor %}
+    </ul>
+  </section>
+{%- endfor %}
+</div>
 <h2 id="past">Past</h2>
-{%- if past.size > 0 %}
-<ul class="talk-list">
-{%- for t in past %}{% include talk-row.html talk=t %}{% endfor %}
-</ul>
-{%- else %}
-<p>Talks will land here as I give them.</p>
 {%- endif %}
-<p class="talks-foot">I also help run the local scene: CFP committee for OWASP Israel, and volunteer staff at BSidesTLV.</p>
+<div class="talk-timeline">
+{%- assign by_year = past | group_by_exp: 't', "t.date | date: '%Y'" -%}
+{%- for yg in by_year %}
+  <section class="year-group">
+    <h2 class="year" id="y{{ yg.name }}">{{ yg.name }}</h2>
+    <ul class="talk-list">
+    {%- for t in yg.items %}{% include talk-row.html talk=t %}{% endfor %}
+    </ul>
+  </section>
+{%- endfor %}
+</div>
+<p class="talks-foot">{% if upcoming.size == 0 %}Nothing on the calendar right now. {% endif %}If you want me at your event, <a href="{{ '/about/' | relative_url }}#contact">get in touch</a>. I also help run the local scene: CFP committee for OWASP Israel, and volunteer staff at BSidesTLV.</p>

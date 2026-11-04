@@ -1,15 +1,82 @@
-# Talks and conference sessions, one entry each. Dates as YYYY-MM-DD.
-# Upcoming and past are split automatically at build time, so an entry moves
-# itself from Upcoming to Past on the first deploy after its date.
-# Keep the "[]" line below when the list is empty.
+# Talks, one entry per appearance: the same talk at two events is two entries,
+# so the page reads as a timeline of where it was given. Dates are the date of
+# presentation as YYYY-MM-DD. Upcoming and past split automatically at build
+# time, so an entry moves itself from Upcoming to Past on the first deploy
+# after its date. Order in this file does not matter; the page sorts by date.
 #
 # - title: Talk title
-#   event: BSidesTLV
-#   city: Tel Aviv
-#   date: 2027-06-25
-#   role: speaker          # speaker | panel | keynote | attendee
-#   abstract: One or two sentences on what the talk covers.
-#   slides: /assets/slides/my-talk.pdf
-#   video: https://www.youtube.com/watch?v=VIDEO_ID
-#   writeup: /posts/some-post/
-[]
+#   event: AppSec Village               # the highlighted name on the timeline
+#   host: DEF CON 34                    # optional parent event, shown after it
+#   city: Las Vegas
+#   date: 2026-08-07
+#   with: [Co-speaker Name]             # optional co-speakers
+#   role: speaker                       # speaker (default) | panel | keynote
+#   video: https://www.youtube.com/watch?v=VIDEO_ID   # recording
+#   abstract_url: https://...           # agenda or abstract page
+#   slides: https://... (or /assets/slides/my-talk.pdf)
+#   writeup: /posts/some-post/          # related post on this site
+#   recap:                              # optional third-party write-ups
+#     - outlet: Some Blog
+#       url: https://...
+#
+# The event name links to the recording when there is one, else to the
+# abstract; both are also listed under the talk.
+
+- title: "Pickled and Exposed: RCE in AI Serving Frameworks"
+  event: AppSec Village
+  host: DEF CON 34
+  city: Las Vegas
+  date: 2026-08-07
+  video: https://www.youtube.com/watch?v=lm96tTgJwFg
+  abstract_url: https://www.appsecvillage.com/events/dc-2026/pickled-and-exposed-rce-in-ai-serving-frameworks-1242338
+  writeup: /posts/sglang-pickle-rce-cve-2026-3059/
+
+- title: "Insecurity as Code: How Modern Software Scaled the Attack Surface"
+  event: OWASP Global AppSec EU 2026
+  city: Vienna
+  date: 2026-06-26
+  video: https://www.youtube.com/watch?v=euQNOk_WtKM
+  abstract_url: https://owaspglobalappseceuvienna20.sched.com/event/2JGvC/insecurity-as-code-how-modern-software-scaled-the-attack-surface
+  slides: "https://hosted-files.sched.co/owaspglobalappseceuvienna20/b7/Insecurity%20as%20Code%20-%20Igor%20Stepansky.pptx"
+
+- title: "Breaking the CI/CD Chain: Security Risks in GitHub Actions"
+  event: "Cloud & CI/CD Security TechSpot"
+  host: On The Spot Development
+  city: Warsaw
+  date: 2025-11-07
+  video: https://www.youtube.com/watch?v=BnXWYPJPcLs
+  abstract_url: https://onthespotdev.com/techspot/cloud-cicd-security
+
+- title: "Breaking the CI/CD Chain: Security Risks in GitHub Actions"
+  event: Blue Team Con 2025
+  city: Chicago
+  date: 2025-09-07
+  abstract_url: https://blueteamcon.com/directory/breaking-the-ci-cd-chain-security-risks-in-github-actions/
+
+- title: "Breaking the CI/CD Chain: Security Risks in GitHub Actions"
+  event: AppSec Village
+  host: DEF CON 33
+  city: Las Vegas
+  date: 2025-08-09
+  with: [Sharon Ohayon Pshoul]
+  abstract_url: https://www.appsecvillage.com/events/dc-2025/breaking-the-ci-cd-chain-security-risks-in-github-actions-901107
+
+- title: "Breaking the CI/CD Chain: Security Risks in GitHub Actions"
+  event: Elbsides 2025
+  city: Hamburg
+  date: 2025-06-13
+  abstract_url: "https://www.elbsides.eu/2025/#breaking-the-cicd-chain-security-risks-in-github-actions"
+
+- title: "Breaking the CI/CD Chain: Security Risks in GitHub Actions"
+  event: OWASP AppSec Israel 2025
+  city: Tel Aviv
+  date: 2025-06-05
+  abstract_url: https://owaspappsecisrael2025.sched.com/event/23NzX/breaking-the-cicd-chain-security-risks-in-github-actions
+
+- title: Ticking SQLi
+  event: AppSec Village
+  host: DEF CON 32
+  city: Las Vegas
+  date: 2024-08-09
+  video: https://www.youtube.com/watch?v=bVKtcu82a8w
+  abstract_url: https://www.appsecvillage.com/events/dc-2024/ticking-sqli-695752

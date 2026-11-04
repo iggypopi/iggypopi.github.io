@@ -196,9 +196,9 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 .research-filter { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
 .research-filter .chip { padding: .15rem .65rem; border: 1px solid var(--btn-border-color); border-radius: 999px; color: var(--text-muted-color); text-decoration: none; transition: color .15s ease, border-color .15s ease; }
 .research-filter .chip:hover { color: var(--iggyp0pi-accent) !important; border-color: var(--iggyp0pi-accent); }
-.research-index .year-group { position: relative; padding-left: 1.5rem; margin-bottom: 1.75rem; border-left: 1px solid rgba(0, 255, 102, .25); }
-.research-index h2.year { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--iggyp0pi-accent); margin: 0 0 .5rem; position: relative; }
-.research-index h2.year::before { content: ''; position: absolute; left: -1.5rem; top: .42em; width: 9px; height: 9px; margin-left: -5px; border-radius: 50%; background: var(--iggyp0pi-accent); box-shadow: 0 0 8px rgba(0, 255, 102, .6); }
+.research-index .year-group, .talk-timeline .year-group { position: relative; padding-left: 1.5rem; margin-bottom: 1.75rem; border-left: 1px solid rgba(0, 255, 102, .25); }
+.research-index h2.year, .talk-timeline h2.year { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--iggyp0pi-accent); margin: 0 0 .5rem; position: relative; }
+.research-index h2.year::before, .talk-timeline h2.year::before { content: ''; position: absolute; left: -1.5rem; top: .42em; width: 9px; height: 9px; margin-left: -5px; border-radius: 50%; background: var(--iggyp0pi-accent); box-shadow: 0 0 8px rgba(0, 255, 102, .6); }
 .research-index .rows { list-style: none; padding: 0; margin: 0; }
 .research-index .row-item { padding: .6rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
 .research-index .line1 { display: flex; flex-wrap: wrap; gap: .4rem .7rem; align-items: baseline; }
@@ -207,13 +207,7 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 .research-index .outlet:hover { color: var(--iggyp0pi-accent) !important; border-bottom-color: var(--iggyp0pi-accent); }
 .research-foot { margin-top: 1.5rem; color: var(--text-muted-color); font-size: .9rem; }
 .talk-list, .elsewhere-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
-.talk-row { padding: .65rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
-.talk-row .line1 { font-family: 'JetBrains Mono', monospace; font-size: .82rem; color: var(--text-muted-color); }
-.talk-row .talk-event { color: var(--heading-color); }
-.talk-row .line2 { margin-top: .15rem; }
-.talk-row .talk-title { font-weight: 700; }
-.talk-row .sep { color: var(--text-muted-color); margin: 0 .15rem; }
-.talk-row .talk-abstract { margin: .3rem 0 0; color: var(--text-muted-color); font-size: .92rem; }
+/* .talk-row: see the v5 talks timeline block at the end of this file. */
 .role-pill { display: inline-block; margin-left: .35rem; padding: .02rem .45rem; border: 1px solid rgba(0, 255, 102, .35); border-radius: 999px; color: var(--iggyp0pi-accent); font-family: 'JetBrains Mono', monospace; font-size: .68rem; text-transform: lowercase; }
 .elsewhere-list li { padding: .4rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
 .elsewhere-note { color: var(--text-muted-color); font-size: .9rem; }
@@ -257,6 +251,10 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 /* (1) CVE badge + severity ride together, left of the title, as one unit. */
 .research-index .idpair { display: inline-flex; align-items: baseline; gap: .4rem; flex: none; }
 
+/* (1b) The title always drops to its own line, under the date + CVE + severity,
+   so a short title no longer rides up beside them while a long one wraps. */
+.research-index .line1 .row-title { flex-basis: 100%; }
+
 /* (4) In-post CVE + CVSS, green, directly under the title. */
 .cve-head { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .1rem 0 1.3rem; }
 
@@ -278,3 +276,29 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-accent) !important; }
 
 /* 'cve findings' chip is a plain chip; its active colour is set in the index :target rules. */
+
+/* ---------- v5 (2026-11-04): talks timeline ---------- */
+
+/* One node per appearance on the same year rail as the research index: a
+   hollow dot beside the filled year dot, the event name as the headline
+   (linked to the recording, else the abstract), the talk title under it. */
+.talk-timeline .talk-row { position: relative; padding: .55rem 0 .85rem; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
+.talk-timeline .talk-row:last-child { border-bottom: 0; }
+.talk-timeline .talk-row::before { content: ''; position: absolute; left: -1.5rem; top: .9rem; width: 7px; height: 7px; margin-left: -4px; border-radius: 50%; border: 1px solid var(--iggyp0pi-accent); background: var(--main-bg); }
+.talk-row .talk-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .4rem; font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--text-muted-color); }
+.talk-row .talk-city::before { content: '\00b7'; margin-right: .4rem; opacity: .6; }
+.talk-row h3.talk-event { margin: .15rem 0 0; padding: 0; font-family: 'JetBrains Mono', monospace; font-size: 1.12rem; font-weight: 700; line-height: 1.35; letter-spacing: .01em; color: var(--iggyp0pi-accent); }
+.talk-row h3.talk-event a { color: inherit; text-decoration: none; }
+.talk-row h3.talk-event a:hover { color: var(--iggyp0pi-accent) !important; text-shadow: 0 0 10px rgba(0, 255, 102, .45); }
+.content .talk-row h3.talk-event a, .content .talk-row h3.talk-event a:hover { border-bottom: 0; }
+.talk-row .talk-host { color: var(--heading-color); font-weight: 500; }
+.talk-row p.talk-title { margin: .2rem 0 0; color: var(--text-color); font-size: .95rem; line-height: 1.5; }
+.talk-row .talk-with { color: var(--text-muted-color); font-size: .85rem; }
+.talk-row .talk-links { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .45rem; font-family: 'JetBrains Mono', monospace; font-size: .74rem; }
+.talk-row .tchip { display: inline-flex; align-items: center; gap: .3rem; padding: .08rem .55rem; border: 1px solid var(--btn-border-color); border-radius: 999px; color: var(--text-muted-color); text-decoration: none; transition: color .15s ease, border-color .15s ease; }
+.talk-row .tchip:hover { color: var(--iggyp0pi-accent) !important; border-color: var(--iggyp0pi-accent); }
+.content .talk-row a.tchip { border-bottom-color: var(--btn-border-color); }
+.content .talk-row a.tchip:hover { border-color: var(--iggyp0pi-accent); }
+.talk-stats { margin-bottom: 1.25rem; }
+.talks-foot { margin-top: 1.5rem; color: var(--text-muted-color); font-size: .9rem; }
+@media (prefers-reduced-motion: reduce) { .talk-row .tchip { transition: none; } }
