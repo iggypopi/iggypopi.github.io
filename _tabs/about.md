@@ -14,7 +14,7 @@ description: >-
   <div class="terminal-body">
     <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> fortune</p>
     <blockquote>It is better to be a warrior in a garden than a gardener in a war.</blockquote>
-    <p class="terminal-source">proverb, origin unknown</p>
+    <p class="terminal-source">often attributed to Miyamoto Musashi</p>
     <p class="terminal-line" aria-hidden="true"><span class="terminal-prompt">iggyp0pi@blog:~$</span> <span class="terminal-cursor">▊</span></p>
   </div>
 </div>
