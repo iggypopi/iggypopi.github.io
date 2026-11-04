@@ -1,6 +1,6 @@
-# iggypopi.github.io
+# iggyp0pi.wtf
 
-Source of [iggypopi.github.io](https://iggypopi.github.io/), Igor Stepansky's security-research blog: vulnerability writeups (CVEs in AI serving frameworks, the Linux kernel, Kubernetes tooling and CI/CD), conference talks, and tools.
+Source of [iggyp0pi.wtf](https://iggyp0pi.wtf/), Igor Stepansky's security-research blog: vulnerability writeups (CVEs in AI serving frameworks, the Linux kernel, Kubernetes tooling and CI/CD), conference talks, and tools.
 
 Built with [Jekyll](https://jekyllrb.com/) and the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme, deployed to GitHub Pages by the workflow in `.github/workflows/`. Theme assets are self-hosted (the `assets/lib` submodule) and the site makes no third-party requests.
 

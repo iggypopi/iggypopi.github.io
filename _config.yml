@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://iggypopi.github.io" # swap to your custom domain later
+url: "https://iggyp0pi.wtf" # custom domain since 2026-11-04; iggypopi.github.io redirects here
 
 github:
   username: iggypopi # change to your GitHub username
