@@ -19,12 +19,12 @@ description: >-
   {%- assign ts = t.date | date: '%s' | plus: 0 -%}
   {%- if ts >= now -%}{%- assign upcoming = upcoming | push: t -%}{%- else -%}{%- assign past = past | push: t -%}{%- endif -%}
 {%- endfor -%}
-{%- assign recorded = talks | where_exp: 't', 't.video' | size -%}
+{%- include site-counts.html -%}
 <p>Where I have spoken, newest first. The event name links to the recording when there is one, otherwise to the abstract; both are listed under each talk.</p>
 <p class="research-stats talk-stats">
-  <span class="stat-num">{{ talks.size }}</span>
+  <span class="stat-num">{{ talk_count }}</span>
   <span class="stat-label">talks</span>
-  {%- if recorded > 0 %}<span class="stat-pending">{{ recorded }} recorded</span>{% endif -%}
+  {%- if recorded_count > 0 %}<span class="stat-pending">{{ recorded_count }} recorded</span>{% endif -%}
 </p>
 {%- if upcoming.size > 0 %}
 <h2 id="upcoming">Upcoming</h2>

@@ -7,6 +7,8 @@ description: >-
   cloud and Kubernetes, agentic AI. Experience, community work, contact.
 ---
 
+{% include site-counts.html %}
+
 <div class="terminal-quote">
   <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="terminal-body">
@@ -19,11 +21,15 @@ description: >-
 
 ## whoami
 
-Igor "iggyp0pi" Stepansky, Security Researcher at OX Security, working on
+Igor "iggy" Stepansky, Security Researcher at OX Security, working on
 agentic AI for offensive security and automated penetration testing.
 Background across AppSec, cloud and Kubernetes security, AI/ML framework
 security, and kernel vulnerability research.
-[{{ site.tags['CVE Discovered'] | size }} published CVEs](/research/) and [{{ site.data.talks | size }} conference talks](/talks/).
+
+<p class="research-stats about-stats">
+  <a class="stat" href="{{ '/research/' | relative_url }}"><span class="stat-num">{{ cve_count }}</span><span class="stat-label">CVEs found</span>{% if pending_count > 0 %}<span class="stat-pending">+{{ pending_count }} pending</span>{% endif %}</a>
+  <a class="stat" href="{{ '/talks/' | relative_url }}"><span class="stat-num">{{ talk_count }}</span><span class="stat-label">talks</span>{% if recorded_count > 0 %}<span class="stat-pending">{{ recorded_count }} recorded</span>{% endif %}</a>
+</p>
 
 ## Experience
 

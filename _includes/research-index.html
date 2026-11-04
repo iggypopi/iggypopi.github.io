@@ -3,9 +3,10 @@
   category grouped by year, newest first, reading cve / cvss / component /
   bug_class / republished / press from post front matter. Topic filters and the
   "cve findings" cross-filter are CSS-only (:target), so this page has no
-  JavaScript and no hand edits. The CVEs-found counter is derived from front
-  matter (each post's cve plus any extra_cves it lists), so it stays correct as
-  posts are added, including future non-CVE research that carries no cve field.
+  JavaScript and no hand edits. The CVEs-found counter comes from
+  site-counts.html (each post's cve plus any extra_cves it lists), the same
+  numbers the About page shows, so it stays correct as posts are added,
+  including future non-CVE research that carries no cve field.
 {%- endcomment -%}
 {%- assign research = site.categories['Vulnerability Research'] | sort: 'date' | reverse -%}
 {%- assign topics = '' | split: '' -%}
@@ -14,13 +15,7 @@
   {%- if t -%}{%- unless topics contains t -%}{%- assign topics = topics | push: t -%}{%- endunless -%}{%- endif -%}
 {%- endfor -%}
 {%- assign topics = topics | sort -%}
-{%- assign cve_count = 0 -%}
-{%- assign pending_count = 0 -%}
-{%- for p in research -%}
-  {%- if p.cve and p.cve != 'pending' -%}{%- assign cve_count = cve_count | plus: 1 -%}{%- endif -%}
-  {%- if p.cve == 'pending' -%}{%- assign pending_count = pending_count | plus: 1 -%}{%- endif -%}
-  {%- if p.extra_cves -%}{%- assign cve_count = cve_count | plus: p.extra_cves.size -%}{%- endif -%}
-{%- endfor -%}
+{%- include site-counts.html -%}
 <style>
 {%- for t in topics -%}{%- assign s = t | slugify %}
 #topic-{{ s }}:target ~ .research-index .row-item:not([data-topic="{{ s }}"]) { display: none; }

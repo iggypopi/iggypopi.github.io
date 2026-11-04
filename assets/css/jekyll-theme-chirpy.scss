@@ -333,3 +333,14 @@ a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-ac
   .home-intro .cursor { animation: hi-in .1s linear var(--t, 0s) both, iggyp0pi-blink 1.1s steps(1) var(--t, 0s) infinite; }
 }
 @media (prefers-reduced-motion: reduce) { .home-intro .cursor { animation: none; } }
+
+/* ---------- v7 (2026-11-04): about page stat tiles ---------- */
+
+/* The whoami numbers as two tiles (CVEs found, talks) that link to their
+   tabs; the counts come from site-counts.html like the tab counters. */
+.about-stats { gap: .6rem; margin: .9rem 0 1.4rem; }
+.about-stats .stat { display: inline-flex; align-items: baseline; gap: .45rem; padding: .4rem .8rem; border: 1px solid rgba(0, 255, 102, .2); border-radius: 8px; background: rgba(0, 255, 102, .04); color: var(--text-color); text-decoration: none; transition: border-color .15s ease; }
+.about-stats .stat:hover { border-color: var(--iggyp0pi-accent); }
+.content .about-stats a.stat { border-bottom: 1px solid rgba(0, 255, 102, .2); }
+.content .about-stats a.stat:hover { border-bottom: 1px solid var(--iggyp0pi-accent); }
+@media (prefers-reduced-motion: reduce) { .about-stats .stat { transition: none; } }

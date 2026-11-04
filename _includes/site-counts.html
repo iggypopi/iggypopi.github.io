@@ -1,0 +1,19 @@
+{%- comment -%}
+  Site-wide counters. Jekyll includes share variables with the page that
+  includes them, so after {% include site-counts.html %} these are available:
+    cve_count       posts with an assigned cve, plus each post's extra_cves
+    pending_count   posts whose cve is 'pending'
+    talk_count      entries in _data/talks.yml
+    recorded_count  talks that have a video
+  Used by the Research index, the Talks tab and the About page, so every
+  number on the site comes from one formula and never goes stale.
+{%- endcomment -%}
+{%- assign cve_count = 0 -%}
+{%- assign pending_count = 0 -%}
+{%- for p in site.categories['Vulnerability Research'] -%}
+  {%- if p.cve and p.cve != 'pending' -%}{%- assign cve_count = cve_count | plus: 1 -%}{%- endif -%}
+  {%- if p.cve == 'pending' -%}{%- assign pending_count = pending_count | plus: 1 -%}{%- endif -%}
+  {%- if p.extra_cves -%}{%- assign cve_count = cve_count | plus: p.extra_cves.size -%}{%- endif -%}
+{%- endfor -%}
+{%- assign talk_count = site.data.talks | size -%}
+{%- assign recorded_count = site.data.talks | where_exp: 't', 't.video' | size -%}
