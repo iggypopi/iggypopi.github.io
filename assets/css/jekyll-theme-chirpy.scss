@@ -191,7 +191,7 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 .cve-chip .comp { color: var(--text-muted-color); }
 .cve-strip-all { margin-left: auto; color: var(--iggyp0pi-accent); text-decoration: none; }
 
-/* ===== iggyp0pi v2 (part 2): research index, talks, elsewhere, panel ===== */
+/* ===== iggyp0pi v2 (part 2): research index, talks, panel ===== */
 .filter-anchor { position: relative; top: -5.5rem; height: 0; }
 .research-filter { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
 .research-filter .chip { padding: .15rem .65rem; border: 1px solid var(--btn-border-color); border-radius: 999px; color: var(--text-muted-color); text-decoration: none; transition: color .15s ease, border-color .15s ease; }
@@ -206,11 +206,9 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 .research-index .outlet { color: var(--text-muted-color); text-decoration: none; border-bottom: 1px dotted var(--text-muted-color); }
 .research-index .outlet:hover { color: var(--iggyp0pi-accent) !important; border-bottom-color: var(--iggyp0pi-accent); }
 .research-foot { margin-top: 1.5rem; color: var(--text-muted-color); font-size: .9rem; }
-.talk-list, .elsewhere-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
+.talk-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
 /* .talk-row: see the v5 talks timeline block at the end of this file. */
 .role-pill { display: inline-block; margin-left: .35rem; padding: .02rem .45rem; border: 1px solid rgba(0, 255, 102, .35); border-radius: 999px; color: var(--iggyp0pi-accent); font-family: 'JetBrains Mono', monospace; font-size: .68rem; text-transform: lowercase; }
-.elsewhere-list li { padding: .4rem 0; border-bottom: 1px dashed rgba(255, 255, 255, .08); }
-.elsewhere-note { color: var(--text-muted-color); font-size: .9rem; }
 #access-lastmod .topic-count { color: var(--text-muted-color); font-family: 'JetBrains Mono', monospace; font-size: .75rem; margin-left: .25rem; }
 @media (prefers-reduced-motion: reduce) { .post-row, .research-filter .chip { transition: none; } }
 .research-filter .chip.all { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
@@ -344,3 +342,31 @@ a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-ac
 .content .about-stats a.stat { border-bottom: 1px solid rgba(0, 255, 102, .2); }
 .content .about-stats a.stat:hover { border-bottom: 1px solid var(--iggyp0pi-accent); }
 @media (prefers-reduced-motion: reduce) { .about-stats .stat { transition: none; } }
+
+/* ---------- v8 (2026-11-04): about page rework ---------- */
+
+/* (1) The two stat tiles a notch quieter: smaller number, softer glow, tighter
+   box. Same markup, still linked to Research and Talks. */
+.about-stats { gap: .5rem; margin: .8rem 0 1.4rem; }
+.about-stats .stat { padding: .28rem .65rem; gap: .4rem; }
+.about-stats .stat-num { font-size: 1.25rem; text-shadow: 0 0 6px rgba(0, 255, 102, .25); }
+.about-stats .stat-label { font-size: .8rem; }
+.about-stats .stat-pending { font-size: .72rem; }
+
+/* (2) Keyword highlights in page prose: the same accent as the home intro's
+   [[kw]] words, a touch lighter in weight for body text. */
+.content .kw { color: var(--iggyp0pi-accent); font-weight: 600; }
+
+/* (3) Experience as a rail timeline with the same geometry as the research
+   and talks rails: period in mono, role + employer as the headline, one short
+   blurb per stop. The current role gets the filled, glowing node; the past
+   ones are hollow. */
+.content .xp-timeline { list-style: none; margin: 0 0 1.75rem; padding: 0 0 0 1.5rem; border-left: 1px solid rgba(0, 255, 102, .25); }
+.xp-timeline .xp { position: relative; margin: 0; padding: 0 0 1.15rem; }
+.xp-timeline .xp:last-child { padding-bottom: .25rem; }
+.xp-timeline .xp::before { content: ''; position: absolute; left: -1.5rem; top: .35rem; width: 9px; height: 9px; margin-left: -5px; border-radius: 50%; border: 1px solid var(--iggyp0pi-accent); background: var(--main-bg); }
+.xp-timeline .xp:first-child::before { background: var(--iggyp0pi-accent); box-shadow: 0 0 8px rgba(0, 255, 102, .6); }
+.xp-timeline .xp-when { display: block; margin-bottom: .1rem; font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--text-muted-color); }
+.xp-timeline h3.xp-role { margin: 0 0 .3rem; padding: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.35; color: var(--iggyp0pi-accent); }
+.xp-timeline .xp-at { color: var(--heading-color); font-weight: 500; }
+.xp-timeline .xp p { margin: 0; color: var(--text-color); font-size: 1rem; line-height: 1.6; }

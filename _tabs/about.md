@@ -3,8 +3,9 @@ title: About
 icon: fas fa-user
 order: 4
 description: >-
-  Igor Stepansky (iggyp0pi), security researcher: offensive security, AppSec,
-  cloud and Kubernetes, agentic AI. Experience, community work, contact.
+  Igor Stepansky (iggyp0pi), security researcher at OX Security: agentic AI for
+  offensive security, RCE in AI serving frameworks, a Linux kernel
+  use-after-free, supply chain and CI/CD bugs. Experience, community, contact.
 ---
 
 {% include site-counts.html %}
@@ -21,10 +22,11 @@ description: >-
 
 ## whoami
 
-Igor "iggy" Stepansky, Security Researcher at OX Security, working on
-agentic AI for offensive security and automated penetration testing.
-Background across AppSec, cloud and Kubernetes security, AI/ML framework
-security, and kernel vulnerability research.
+Igor "iggy" Stepansky. Security Researcher at OX Security, where I build <span class="kw">agentic AI for offensive security</span>: autonomous systems that chain vulnerabilities and logic flaws into real attack paths, the way a pentester would, minus the coffee breaks. Before that, Orca Security's Research Pod.
+
+My research has turned up <span class="kw">unauthenticated remote code execution</span> in AI/LLM serving frameworks, a <span class="kw">use-after-free</span> race in the Linux kernel's ksmbd SMB3 server, and a steady stream of <span class="kw">supply chain and CI/CD</span> vulnerabilities across the modern developer stack. Under all of that sit years of hands-on AppSec: SAST, SCA, IaC scanning, secrets detection, malicious-package hunting, and hardening cloud, container and GitHub environments.
+
+The pattern, if there is one: I like high-impact bugs in <span class="kw">infrastructure that is deployed everywhere</span>, I like handing the fix back (a regular CVE contributor to open-source software), and I like to learn by being slightly out of my depth. New domain, new target, new rabbit hole. That's the fun part.
 
 <p class="research-stats about-stats">
   <a class="stat" href="{{ '/research/' | relative_url }}"><span class="stat-num">{{ cve_count }}</span><span class="stat-label">CVEs found</span>{% if pending_count > 0 %}<span class="stat-pending">+{{ pending_count }} pending</span>{% endif %}</a>
@@ -33,40 +35,44 @@ security, and kernel vulnerability research.
 
 ## Experience
 
-- **OX Security**: Security Researcher (2026-present). Agentic AI for
-  offensive security and automated pentesting.
-- **Orca Security, Research Pod** (2025-2026). API, Kubernetes, and
-  AppSec research.
-- **Axonius**: Security Engineer (2022-2025). SDLC security tooling and
-  pentest engagements.
-- **Rafael Advanced Defense Systems**: Cyber Security Analyst
-  (2020-2022). Blue team / SOC.
+<ul class="xp-timeline">
+  <li class="xp">
+    <span class="xp-when">2026 - present</span>
+    <h3 class="xp-role">Security Researcher <span class="xp-at">@ OX Security</span></h3>
+    <p>Teaching machines to hack. Autonomous, agentic pentesting at the intersection of offensive security and AI: the detection engines, the decision-making logic, and the research into vulnerability chaining and logic flaws, prototyped and shipped into production alongside engineering and data science.</p>
+  </li>
+  <li class="xp">
+    <span class="xp-when">2025 - 2026</span>
+    <h3 class="xp-role">Security Researcher <span class="xp-at">@ Orca Security</span></h3>
+    <p>The Research Pod. AppSec, API and Kubernetes research, detection logic for new vulnerabilities and supply-chain threats, and zero-days found and responsibly disclosed along the way, a use-after-free in the Linux kernel's ksmbd among them. Plus the writing, and the conference stages that come with it.</p>
+  </li>
+  <li class="xp">
+    <span class="xp-when">2022 - 2025</span>
+    <h3 class="xp-role">Security Engineer <span class="xp-at">@ Axonius</span></h3>
+    <p>Where the AppSec muscle was built. Owned security across the full SDLC: SAST, SCA, DAST, IaC and secrets-detection programs, security code reviews for R&amp;D, malicious-package analysis, cross-company remediation, and pentest engagements. The first DEF CON talk happened from here.</p>
+  </li>
+  <li class="xp">
+    <span class="xp-when">2020 - 2022</span>
+    <h3 class="xp-role">Cyber Security Analyst <span class="xp-at">@ Rafael Advanced Defense Systems</span></h3>
+    <p>Blue team first. SOC monitoring, alert triage and first-response incident investigation across network and endpoint. Knowing what the defenders actually see is still the most useful thing I carry into offense.</p>
+  </li>
+</ul>
 
 ## Community
 
-- OWASP Israel, CFP committee
-- BSidesTLV, volunteer staff
-
-## Elsewhere
-
-My writeups that also ran on other blogs, and the coverage they picked up. The full versions live here.
-
-{% include elsewhere.html %}
+- **OWASP Israel, CFP committee.** I read the abstracts. Write a good one and I will go to bat for it.
+- **BSidesTLV, volunteer staff.** The crew that keeps the con running. Come say hi.
+- **Off the security scene.** Volunteered with ELEM (youth in distress) and in elderly community support, 2024.
 
 ## Certifications & education
 
-- OSWE (in progress)
-- B.Sc. Computer Science, Open University of Israel (in progress)
+- OSWE (Offensive Security Web Expert), in progress
+- AWS Certified Cloud Practitioner
+- B.Sc. Computer Science, the Open University of Israel, in progress (the slow way, around everything above)
 
-## Hobbies
+## Off the clock
 
-Also known as my midlife crises:
-
-- **Brazilian Jiu-Jitsu**: chess with chokes, and the best training I know
-  for staying calm under pressure.
-- **Ultra running**: because a marathon just wasn't long enough.
-- **Dad life**: my favorite full-time job.
-- **Geek stuff**: if it has a CPU, I'll find a way to poke at it.
+Dad life first. Everything after this sentence is a hobby: Brazilian Jiu-Jitsu (chess with chokes) and long runs (a marathon just wasn't long enough), a soldering iron and whatever has a CPU, and whichever new thing I'm learning this month. Three human languages (English, Hebrew, Russian) and more computer ones than is healthy.
 
 ## Contact
 
