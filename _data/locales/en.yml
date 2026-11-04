@@ -20,4 +20,4 @@ panel:
 post:
   pin_prompt: pinned
 
-meta: "Built with :PLATFORM and :THEME. Self-hosted assets, no third-party requests."
+meta: "Built with :PLATFORM and :THEME. Self-hosted assets. One third-party request, to GoatCounter for view counts, no cookies."

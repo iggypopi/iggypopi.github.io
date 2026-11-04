@@ -64,7 +64,7 @@ analytics:
   google:
     id: # fill in your Google Analytics ID
   goatcounter:
-    id: # fill in your GoatCounter ID
+    id: iggyp0pi # GoatCounter site code; dashboard at https://iggyp0pi.goatcounter.com (loads one script from gc.zgo.at, no cookies)
   umami:
     id: # fill in your Umami ID
     domain: # fill in your Umami domain
@@ -78,7 +78,7 @@ analytics:
 
 # Page views settings
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: goatcounter # per-post view counts from GoatCounter (its public visitor counter must be enabled in the GoatCounter settings)
 
 # Prefer color scheme setting.
 #
