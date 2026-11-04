@@ -1,9 +1,35 @@
-# One entry per tool. Posts that carry the tool's tag are listed under it automatically.
+# One entry per tool. `status` is "released" or "upcoming"; the Tools page shows
+# released tools first and upcoming ones under "In the works". `points` are the
+# short "Label. Detail." lines on the card (label in bold). Posts that carry the
+# tool's `tag` are listed under it automatically. House style: no em dashes.
 - name: ActChain
   tag: ActChain
-  status: rebuild in progress
-  summary: >-
-    A security scanner for GitHub Actions workflows and their dependencies.
-    It walks the supply chain behind a CI/CD pipeline and flags vulnerabilities,
-    misconfigurations, and compliance gaps before they ship.
-  repo:
+  status: released
+  repo: https://github.com/iggypopi/ActChain
+  lang: Python
+  license: MIT
+  install: pip install git+https://github.com/iggypopi/ActChain.git
+  tagline: >-
+    Scans the actions your GitHub Actions use, and the actions those use,
+    all the way down. Then locks down what's clean.
+  points:
+    - label: Maps the full chain.
+      text: >-
+        Every action your workflows use, and every action those use,
+        recursively. Then zizmor and opengrep on each link, down the whole tree.
+    - label: AI on top, opt in.
+      text: >-
+        One agent triages the findings, another reads the action code itself,
+        hunting for exfiltration, obfuscated payloads and typosquats.
+    - label: Malicious? You'll know.
+      text: >-
+        Red alert in the terminal, first page of every report, exit code 2
+        for CI.
+    - label: Clean? It locks it down.
+      text: >-
+        Opens a PR pinning every action to the exact commit SHA it just
+        scanned, not whatever the tag points to tomorrow. The gate fails
+        closed on any coverage gap, and AI can only make it stricter, never
+        greener.
+    - label: Reports for everyone.
+      text: Terminal, JSON, HTML, PDF.

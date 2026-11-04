@@ -1,0 +1,19 @@
+{%- comment -%}
+  One tool from _data/tools.yml as a card: name (linked to the repo), tagline,
+  the short points, chips (source, language, license), the install line, and
+  any posts tagged with the tool. Used by _tabs/tools.md.
+{%- endcomment -%}
+{%- assign t = include.tool -%}
+<section class="tool-card" id="{{ t.name | slugify }}">
+  <h2 class="tool-name">{% if t.repo %}<a href="{{ t.repo }}">{{ t.name }}</a>{% else %}{{ t.name }}{% endif %}{% if t.status == 'upcoming' %} <span class="status-pill">upcoming</span>{% endif %}</h2>
+  {%- if t.tagline %}<p class="tool-tagline">{{ t.tagline }}</p>{% endif %}
+  {%- if t.points and t.points.size > 0 %}<ul class="tool-points">{% for pt in t.points %}<li><b>{{ pt.label }}</b> {{ pt.text }}</li>{% endfor %}</ul>{% endif %}
+  {%- if t.repo or t.lang or t.license %}<div class="tool-links">
+    {%- if t.repo %}<a class="tchip" href="{{ t.repo }}"><i class="fab fa-github"></i> source</a>{% endif -%}
+    {%- if t.lang %}<span class="tchip static">{{ t.lang }}</span>{% endif -%}
+    {%- if t.license %}<span class="tchip static">{{ t.license }}</span>{% endif -%}
+  </div>{% endif %}
+  {%- if t.install %}<p class="tool-install"><span class="ps1">$ </span><code>{{ t.install }}</code></p>{% endif %}
+  {%- assign related = site.tags[t.tag] -%}
+  {%- if related and related.size > 0 %}<p class="tool-posts">Posts about {{ t.name }}: {% for p in related %}<a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
+</section>
