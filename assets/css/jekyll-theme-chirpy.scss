@@ -270,8 +270,11 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
 .research-stats .stat-label { color: var(--text-color); font-size: .85rem; letter-spacing: .02em; }
 .research-stats .stat-pending { color: var(--text-muted-color); font-size: .78rem; }
 
-/* (8) The CVE badge is a link to NVD: drop the theme underline, add a quiet hover fill. */
-.content a.cve-badge { border-bottom: 0; text-decoration: none; }
+/* (8) The CVE badge is a link to NVD. Re-assert the full box border (the theme
+   paints a bottom border on .content links, which otherwise overrode the
+   badge's own bottom edge and made the square look open at the bottom), drop
+   the text underline, and give it a quiet hover fill. */
+.content a.cve-badge { border: 1px solid var(--iggyp0pi-accent); text-decoration: none; }
 a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-accent) !important; }
 
 /* 'cve findings' chip is a plain chip; its active colour is set in the index :target rules. */
