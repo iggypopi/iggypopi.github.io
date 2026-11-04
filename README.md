@@ -12,4 +12,4 @@ Built with [Jekyll](https://jekyllrb.com/) and the [Chirpy](https://github.com/c
 
 ## License
 
-The site code is MIT licensed, see `LICENSE`. Each post carries its own license note at the end.
+The site code is MIT licensed, see `LICENSE`. Posts are published under CC BY 4.0, as the note at the end of each post says.

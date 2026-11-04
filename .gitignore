@@ -29,3 +29,10 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# Never commit documents or secrets by accident (resume, notes, env files).
+*.pdf
+*.doc
+*.docx
+.env
+.env.*
