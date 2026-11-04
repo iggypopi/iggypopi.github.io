@@ -9,22 +9,22 @@
 {%- assign d = site.data.home_intro -%}
 {%- assign kw_open = '<span class="kw">' -%}
 {%- assign kw_close = '</span>' -%}
-{%- assign t = 0.1 -%}
-{%- assign cmd = 'whoami' -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 -%}
+{%- assign t = 0.15 -%}
+{%- assign cmd = 'whoami' -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.04 | round: 2 -%}
 <div class="home-intro">
   <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span></span>
-  {%- assign t = t | plus: dur | plus: 0.22 | round: 2 %}
+  {%- assign t = t | plus: dur | plus: 0.28 | round: 2 %}
   <span class="ln out" style="--t:{{ t }}s"><strong class="hi">{{ d.whoami.greeting | replace: '[[', kw_open | replace: ']]', kw_close }}</strong> {{ d.whoami.blurb | replace: '[[', kw_open | replace: ']]', kw_close }} <a class="more" href="{{ '/about/' | relative_url }}">{{ d.whoami.link_text }} &rarr;</a></span>
-  {%- assign t = t | plus: 0.3 | round: 2 -%}
-  {%- assign cmd = 'cat ' | append: d.manifesto.file -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 %}
+  {%- assign t = t | plus: 0.4 | round: 2 -%}
+  {%- assign cmd = 'cat ' | append: d.manifesto.file -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.04 | round: 2 %}
   <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span></span>
-  {%- assign t = t | plus: dur | plus: 0.22 | round: 2 -%}
+  {%- assign t = t | plus: dur | plus: 0.28 | round: 2 -%}
   {%- for q in d.manifesto.lines %}
   <span class="ln quote" style="--t:{{ t }}s">{{ q | replace: '[[', kw_open | replace: ']]', kw_close }}</span>
-  {%- assign t = t | plus: 0.28 | round: 2 -%}
+  {%- assign t = t | plus: 0.38 | round: 2 -%}
   {%- endfor %}
   <span class="ln src" style="--t:{{ t }}s"># <a href="{{ d.manifesto.source.url }}">{{ d.manifesto.source.text }}</a></span>
-  {%- assign t = t | plus: 0.4 | round: 2 -%}
-  {%- assign cmd = d.closing_cmd -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 %}
+  {%- assign t = t | plus: 0.5 | round: 2 -%}
+  {%- assign cmd = d.closing_cmd -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.04 | round: 2 %}
   <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span><span class="cursor" style="--t:{{ t }}s" aria-hidden="true"></span></span>
 </div>
