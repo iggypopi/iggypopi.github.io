@@ -1,16 +1,26 @@
 {%- comment -%}
   Generated research index. Lists every post in the "Vulnerability Research"
   category grouped by year, newest first, reading cve / cvss / component /
-  bug_class / republished / press from post front matter. Topic filters are
-  CSS-only (:target), so this page has no JavaScript and no hand edits.
+  bug_class / republished / press from post front matter. Topic filters and the
+  "cve findings" cross-filter are CSS-only (:target), so this page has no
+  JavaScript and no hand edits. The CVEs-found counter is derived from front
+  matter (each post's cve plus any extra_cves it lists), so it stays correct as
+  posts are added, including future non-CVE research that carries no cve field.
 {%- endcomment -%}
-{%- assign research = site.categories['Vulnerability Research'] -%}
+{%- assign research = site.categories['Vulnerability Research'] | sort: 'date' | reverse -%}
 {%- assign topics = '' | split: '' -%}
 {%- for p in research -%}
   {%- assign t = p.categories[1] -%}
   {%- if t -%}{%- unless topics contains t -%}{%- assign topics = topics | push: t -%}{%- endunless -%}{%- endif -%}
 {%- endfor -%}
 {%- assign topics = topics | sort -%}
+{%- assign cve_count = 0 -%}
+{%- assign pending_count = 0 -%}
+{%- for p in research -%}
+  {%- if p.cve and p.cve != 'pending' -%}{%- assign cve_count = cve_count | plus: 1 -%}{%- endif -%}
+  {%- if p.cve == 'pending' -%}{%- assign pending_count = pending_count | plus: 1 -%}{%- endif -%}
+  {%- if p.extra_cves -%}{%- assign cve_count = cve_count | plus: p.extra_cves.size -%}{%- endif -%}
+{%- endfor -%}
 <style>
 {%- for t in topics -%}{%- assign s = t | slugify %}
 #topic-{{ s }}:target ~ .research-index .row-item:not([data-topic="{{ s }}"]) { display: none; }
@@ -19,11 +29,22 @@
 #topic-{{ s }}:target ~ .research-filter .chip.all { color: var(--text-muted-color); border-color: var(--btn-border-color); }
 {%- endfor %}
 #research-all:target ~ .research-filter .chip[href="#research-all"] { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
+#filter-cve:target ~ .research-index .row-item:not([data-cve="yes"]) { display: none; }
+#filter-cve:target ~ .research-index .year-group:not(:has(.row-item[data-cve="yes"])) { display: none; }
+#filter-cve:target ~ .research-filter .chip[href="#filter-cve"] { color: var(--iggyp0pi-accent); border-color: var(--iggyp0pi-accent); }
+#filter-cve:target ~ .research-filter .chip.all { color: var(--text-muted-color); border-color: var(--btn-border-color); }
 </style>
 <div id="research-all" class="filter-anchor"></div>
+<div id="filter-cve" class="filter-anchor"></div>
 {%- for t in topics -%}<div id="topic-{{ t | slugify }}" class="filter-anchor"></div>{%- endfor %}
+<p class="research-stats">
+  <span class="stat-num">{{ cve_count }}</span>
+  <span class="stat-label">CVEs found</span>
+  {%- if pending_count > 0 %}<span class="stat-pending">+{{ pending_count }} pending</span>{% endif -%}
+</p>
 <nav class="research-filter" aria-label="Filter by area">
   <a class="chip all" href="#research-all">all</a>
+  <a class="chip cve" href="#filter-cve">cve findings</a>
   {%- for t in topics %}
   <a class="chip" href="#topic-{{ t | slugify }}">{{ t | downcase }}</a>
   {%- endfor %}
@@ -35,12 +56,11 @@
     <h2 class="year" id="y{{ yg.name }}">{{ yg.name }}</h2>
     <ul class="rows">
     {%- for p in yg.items %}
-      <li class="row-item" data-topic="{{ p.categories[1] | slugify }}">
+      <li class="row-item" data-topic="{{ p.categories[1] | slugify }}" data-cve="{% if p.cve %}yes{% else %}no{% endif %}">
         <div class="line1">
           <time class="rdate" datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: '%Y-%m-%d' }}</time>
-          {% include cve-badge.html post=p %}
+          {%- if p.cve or p.cvss %}<span class="idpair">{% include cve-badge.html post=p link=true %}{% include severity-pill.html post=p %}</span>{% endif -%}
           <h3 class="row-title"><a class="rtitle" href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
-          {% include severity-pill.html post=p %}
         </div>
         <div class="line2">
           {%- if p.component %}<span>{{ p.component }}</span>{% endif -%}

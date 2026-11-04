@@ -251,3 +251,27 @@ h1.dynamic-title::before { content: '~$ '; color: var(--iggyp0pi-accent); opacit
    Use a faint accent tint and lift the secondary text instead. */
 .post-row:hover { background: rgba(0, 255, 102, .03); }
 .post-row:hover .row-desc, .post-row:hover .row-line2 { color: var(--text-color); }
+
+/* ---------- v4 (2026-11-04): research tab polish ---------- */
+
+/* (1) CVE badge + severity ride together, left of the title, as one unit. */
+.research-index .idpair { display: inline-flex; align-items: baseline; gap: .4rem; flex: none; }
+
+/* (4) In-post CVE + CVSS, green, directly under the title. */
+.cve-head { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .1rem 0 1.3rem; }
+
+/* (6) 'also on' / 'covered by' outlet names a touch brighter so they stand out;
+   the lead-in words and the dotted underline stay quiet. */
+.research-index .outlet { color: var(--text-color); }
+
+/* (7) CVEs-found counter, above the filters. */
+.research-stats { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin: 0 0 1rem; font-family: 'JetBrains Mono', monospace; }
+.research-stats .stat-num { font-size: 1.7rem; font-weight: 700; color: var(--iggyp0pi-accent); line-height: 1; text-shadow: 0 0 10px rgba(0, 255, 102, .35); }
+.research-stats .stat-label { color: var(--text-color); font-size: .85rem; letter-spacing: .02em; }
+.research-stats .stat-pending { color: var(--text-muted-color); font-size: .78rem; }
+
+/* (8) The CVE badge is a link to NVD: drop the theme underline, add a quiet hover fill. */
+.content a.cve-badge { border-bottom: 0; text-decoration: none; }
+a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-accent) !important; }
+
+/* 'cve findings' chip is a plain chip; its active colour is set in the index :target rules. */

@@ -18,6 +18,8 @@ description: >-
   direct path to the registry's cloud IAM credentials.
 ---
 
+{% include cve-head.html %}
+
 OX Security Research found and disclosed a high-severity bug in Harbor, the CNCF container registry, that lets any registered user turn a project webhook into a direct path to the server's cloud IAM credentials. No admin access. No user interaction. You create a project and set a URL.
 
 That low bar is the whole story. Most SSRF bugs in web apps need admin rights to configure an outbound request. This one needs a registered account, which any new user makes in their first five minutes. On instances with self-registration enabled, it needs nothing but a working email address.
