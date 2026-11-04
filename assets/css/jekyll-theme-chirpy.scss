@@ -316,7 +316,8 @@ a.cve-badge:hover { background: rgba(0, 255, 102, .12); color: var(--iggyp0pi-ac
 .home-intro .cmd { display: inline-block; vertical-align: bottom; white-space: nowrap; overflow: hidden; color: var(--heading-color); }
 .home-intro .out { margin: .1rem 0 .5rem; }
 .home-intro .hi { color: var(--heading-color); font-weight: 700; }
-.home-intro .out .more { color: var(--iggyp0pi-accent); text-decoration: none; border-bottom: 1px dotted rgba(0, 255, 102, .5); }
+.home-intro .kw { color: var(--iggyp0pi-accent); font-weight: 700; }
+.home-intro .out .more { color: var(--iggyp0pi-accent); text-decoration: none; border-bottom: 1px dotted rgba(0, 255, 102, .5); white-space: nowrap; }
 .home-intro .out .more:hover { color: var(--iggyp0pi-accent) !important; border-bottom-style: solid; }
 .home-intro .quote { position: relative; padding-left: 1.2rem; }
 .home-intro .quote::before { content: '>'; position: absolute; left: .1rem; color: var(--iggyp0pi-accent); opacity: .6; }
