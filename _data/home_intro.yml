@@ -1,0 +1,21 @@
+# The landing block at the top of the home page (first page only), rendered by
+# _includes/home-intro.html as a short terminal session: whoami, a cat of the
+# manifesto, then an ls whose "output" is the post list below. Edit freely.
+# Keep the quote lines short and verbatim, and use no em dashes anywhere (the
+# build rejects them).
+whoami:
+  greeting: "Hello, my name is Iggy."
+  blurb: "I hunt bugs in the software everyone trusts, and write them up here."
+  link_text: "more about me"
+manifesto:
+  file: "~/manifesto.txt"
+  lines:
+    - "I made a discovery today. I found a computer. Wait a second, this is cool. It does what I want it to."
+    - "This is our world now... the world of the electron and the switch, the beauty of the baud."
+    - "We explore... and you call us criminals. We seek after knowledge... and you call us criminals."
+    - "Yes, I am a criminal. My crime is that of curiosity."
+    - "I am a hacker, and this is my manifesto. You may stop this individual, but you can't stop us all... after all, we're all alike."
+  source:
+    text: "The Mentor, The Conscience of a Hacker, Phrack 7 (1986)"
+    url: https://phrack.org/issues/7/hackers-manifesto.html
+closing_cmd: "ls -t ~/posts/"

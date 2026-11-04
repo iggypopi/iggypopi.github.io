@@ -5,8 +5,10 @@ layout: default
   Site override of jekyll-theme-chirpy 7.6.0 _layouts/home.html.
   Changes: posts render as dense rows (date, CVE badge, title, severity,
   description, context) instead of cards, and a "latest disclosures" strip
-  appears once the feed spans more than one page. The pin/pagination logic
-  below is unchanged from the theme. Diff against the gem on every Chirpy bump.
+  appears once the feed spans more than one page. A terminal-style intro
+  (home-intro.html, text in _data/home_intro.yml) sits above the rows on
+  page 1. The pin/pagination logic below is unchanged from the theme.
+  Diff against the gem on every Chirpy bump.
 {%- endcomment -%}
 {% include lang.html %}
 
@@ -48,6 +50,7 @@ layout: default
   {% endfor %}
 {% endif %}
 
+{% unless paginator.page > 1 %}{% include home-intro.html %}{% endunless %}
 {% if paginator.total_pages > 1 %}{% include cve-strip.html %}{% endif %}
 
 <div id="post-list" class="post-rows flex-grow-1 px-xl-1">

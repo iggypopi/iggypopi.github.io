@@ -1,0 +1,28 @@
+{%- comment -%}
+  Landing block for the home page: a short terminal session built from
+  _data/home_intro.yml. The commands "type" and the output lines fade in on a
+  CSS-only schedule (v6 block in the stylesheet); under prefers-reduced-motion
+  everything is simply shown. Inline custom properties: --n is the command's
+  character count (typewriter width), --d its typing time, --t the start delay.
+  The clock t runs through the block so every line follows the previous one.
+{%- endcomment -%}
+{%- assign d = site.data.home_intro -%}
+{%- assign t = 0.1 -%}
+{%- assign cmd = 'whoami' -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 -%}
+<div class="home-intro">
+  <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span></span>
+  {%- assign t = t | plus: dur | plus: 0.22 | round: 2 %}
+  <span class="ln out" style="--t:{{ t }}s"><strong class="hi">{{ d.whoami.greeting }}</strong> {{ d.whoami.blurb }} <a class="more" href="{{ '/about/' | relative_url }}">{{ d.whoami.link_text }} &rarr;</a></span>
+  {%- assign t = t | plus: 0.3 | round: 2 -%}
+  {%- assign cmd = 'cat ' | append: d.manifesto.file -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 %}
+  <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span></span>
+  {%- assign t = t | plus: dur | plus: 0.22 | round: 2 -%}
+  {%- for q in d.manifesto.lines %}
+  <span class="ln quote" style="--t:{{ t }}s">{{ q }}</span>
+  {%- assign t = t | plus: 0.28 | round: 2 -%}
+  {%- endfor %}
+  <span class="ln src" style="--t:{{ t }}s"># <a href="{{ d.manifesto.source.url }}">{{ d.manifesto.source.text }}</a></span>
+  {%- assign t = t | plus: 0.4 | round: 2 -%}
+  {%- assign cmd = d.closing_cmd -%}{%- assign n = cmd | size -%}{%- assign dur = n | times: 0.03 | round: 2 %}
+  <span class="ln"><span class="ps1">~$ </span><span class="cmd" style="--n:{{ n }};--d:{{ dur }}s;--t:{{ t }}s">{{ cmd }}</span><span class="cursor" style="--t:{{ t }}s" aria-hidden="true"></span></span>
+</div>
